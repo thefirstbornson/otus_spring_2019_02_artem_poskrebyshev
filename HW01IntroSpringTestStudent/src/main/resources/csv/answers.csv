@@ -1,0 +1,5 @@
+1,String,int,Boolean,PrimitiveChar,2
+2,0,null,false,true,3
+3,for, while, do-while,repeat-until,4
+4,javac,JavaCompiler,cx_Freeze,classGen,1
+5,JRE,JDK,JVM,JJB,1
