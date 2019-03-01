@@ -34,18 +34,20 @@ public class IOServiceImpl implements IOService<UserAnswer>{
 
     public void showResults (List<UserAnswer> userAnswers){
         int numOfRightAnswers=0;
-        for(UserAnswer userAnswer:userAnswers){
-            if (userAnswer.getAnswer().isCorrect()) numOfRightAnswers++;
-        }
-        System.out.println();
-        System.out.println("Тест завершен!");
-        System.out.println("СТУДЕНТ: "+userAnswers.get(0).getUser());
-        System.out.println("-----------------------------------------");
-        System.out.println("----     РЕЗУЛЬТАТЫ ТЕСТИРОВАНИЯ     ----");
-        System.out.println("-----------------------------------------");
-        System.out.println("Отвечено на "+numOfRightAnswers + " вопросов из " + userAnswers.size() );
-        System.out.println();
-        System.out.println();
+        if (userAnswers.size()>0){
+            for(UserAnswer userAnswer:userAnswers){
+                if (userAnswer.getAnswer().isCorrect()) numOfRightAnswers++;
+            }
+            System.out.println();
+            System.out.println("Тест завершен!");
+            System.out.println("СТУДЕНТ: "+userAnswers.get(0).getUser());
+            System.out.println("-----------------------------------------");
+            System.out.println("----     РЕЗУЛЬТАТЫ ТЕСТИРОВАНИЯ     ----");
+            System.out.println("-----------------------------------------");
+            System.out.println("Отвечено на "+numOfRightAnswers + " вопросов из " + userAnswers.size() );
+            System.out.println();
+            System.out.println();
+        } else System.out.println("Ошибка загрузки вопросов из файла");
     }
 
     @Override

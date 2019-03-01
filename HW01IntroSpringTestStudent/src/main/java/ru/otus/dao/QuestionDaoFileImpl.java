@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Repository
 public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Question>  {
 
     public QuestionDaoFileImpl(String fileName) {
@@ -32,11 +31,11 @@ public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Qu
         String[] record = null;
 
         while ((record = qReader.readNext()) != null) {
-            if (record.length==3){
+            if (Arrays.asList(record).indexOf("#ans")==3){
                 try {
                     Question qstn = new Question(Integer.valueOf(record[0]),record[1],Integer.valueOf(record[2]));
                     qstns.add(qstn);
-                } catch (NumberFormatException e){
+                } catch (NullPointerException | NumberFormatException e){
                     e.printStackTrace();
                 }
             }

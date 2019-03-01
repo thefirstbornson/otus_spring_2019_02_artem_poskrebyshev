@@ -35,19 +35,21 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
     @Override
     public List<UserAnswer> getTested() {
         User user = getUserService.getUser();
-        List<UserAnswer> userAnswers = new ArrayList<>();
+        List<UserAnswer> userAnswers =new ArrayList<>();
         List<Question>  questionList =  qaCorrespondenceService.correspondQA();
-        for (int k=0;k<questionList.size();k++ ){
-            Question question = questionList.get(k);
-            ioService.showText(k+1+". "+question.getText());
-            ioService.showText("\n");
-            for(int i=0; i<question.getAnswerList().size();i++){
-                ioService.showText(i+1 +"." +question.getAnswerList().get(i).getText() + " ");
+        if (questionList.size()>0) {
+            for (int k = 0; k < questionList.size(); k++) {
+                Question question = questionList.get(k);
+                ioService.showText(k + 1 + ". " + question.getText());
+                ioService.showText("\n");
+                for (int i = 0; i < question.getAnswerList().size(); i++) {
+                    ioService.showText(i + 1 + "." + question.getAnswerList().get(i).getText() + " ");
+                }
+                ioService.showText("\n");
+                int choice = Integer.parseInt(ioService.userInput("Введите номер ответа: ")) - 1;
+                Answer answer = question.getAnswerList().get(choice);
+                userAnswers.add(getUserAnswerService.getUserAnswer(user, question, answer));
             }
-            ioService.showText("\n");
-            int choice = Integer.parseInt(ioService.userInput("Введите номер ответа: "))-1;
-            Answer answer = question.getAnswerList().get(choice);
-            userAnswers.add(getUserAnswerService.getUserAnswer(user, question, answer));
         }
         return userAnswers;
     }

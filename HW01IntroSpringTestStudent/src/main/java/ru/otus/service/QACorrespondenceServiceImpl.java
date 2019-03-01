@@ -22,9 +22,10 @@ public class QACorrespondenceServiceImpl implements QACorrespondenceService<Ques
     public List<Question> correspondQA() {
         List<Question> qstns =questionService.getQuestions();
         List<Answer> answrs = answerService.getAnswers();
-        for (Question question :qstns ) {
-            question.setAnswerList(answrs);
-
+        if (qstns.size()>0) {
+            for (Question question : qstns) {
+                question.setAnswerList(answrs);
+            }
         }
         return qstns;
     }
