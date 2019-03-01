@@ -10,12 +10,12 @@ import ru.otus.dao.QuestionDaoFileImpl;
 public class DaoConfig {
     @Bean
     public DAO answerDaoFileImpl(){
-        return new AnswerDaoFileImpl("csv/questions_with_answers.csv");
+        return new AnswerDaoFileImpl("csv/questions_answers.csv");
     }
 
     @Bean
     public DAO questionDaoFileImpl(){
-        return new QuestionDaoFileImpl("csv/questions_with_answers.csv");
+        return new QuestionDaoFileImpl("csv/questions_answers.csv");
     }
 
 }

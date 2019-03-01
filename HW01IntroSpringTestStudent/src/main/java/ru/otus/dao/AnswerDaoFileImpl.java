@@ -30,14 +30,24 @@ public class AnswerDaoFileImpl extends DaoFileImpl<Answer> implements DAO<Answer
 
         List<Answer> answs = new ArrayList<>();
         String[] record = null;
-        int aStart = Arrays.binarySearch(record,"ans")+1;
+        int aStart =0;
+
 
         while ((record = aReader.readNext()) != null) {
-                for (int i=aStart;i<record.length-1;i++) {
-                    Answer answ = new Answer(Integer.valueOf(record[0]), record[i]
-                                            ,Integer.valueOf(record[record.length - 1]) == i ? true : false);
-                    answs.add(answ);
+            aStart = Arrays.asList(record).indexOf("#ans");
+            String a=record[0];
+            if (aStart>0){
+                try {
+                    for (int i=aStart+1;i<record.length-1;i++) {
+                        Answer answ = new Answer(Integer.valueOf(record[0])
+                                                ,record[i]
+                                                ,Integer.valueOf(record[record.length - 1]) == i ? true : false);
+                        answs.add(answ);
+                    }
+                } catch (NumberFormatException e){
+                    e.printStackTrace();
                 }
+            }
         }
 
 
