@@ -1,7 +1,6 @@
-package ru.otus.service;
+package ru.otus.io;
 
 import ru.otus.domain.UserAnswer;
-import ru.otus.view.ConsoleViewService;
 
 import java.io.BufferedReader;
 import java.io.IOException;

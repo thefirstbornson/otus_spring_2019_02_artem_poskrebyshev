@@ -1,4 +1,4 @@
-package ru.otus.service;
+package ru.otus.io;
 
 import ru.otus.domain.UserAnswer;
 

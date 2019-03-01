@@ -1,12 +1,13 @@
 package ru.otus.service;
 
 import ru.otus.domain.User;
+import ru.otus.io.IOService;
 
-public class GetUserServiceImple implements GetUserService {
+public class GetUserServiceImpl implements GetUserService {
     final IOService ioService;
     final UserSequanceService userSequanceService;
 
-    public GetUserServiceImple(IOService ioService, UserSequanceService userSequanceService) {
+    public GetUserServiceImpl(IOService ioService, UserSequanceService userSequanceService) {
         this.ioService = ioService;
         this.userSequanceService = userSequanceService;
     }

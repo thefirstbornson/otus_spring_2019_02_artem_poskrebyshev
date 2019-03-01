@@ -24,17 +24,25 @@
         <constructor-arg index="1" ref="questionService"/>
     </bean>
 
-    <bean id="ioService" class="ru.otus.service.IOServiceImpl"></bean>
+    <bean id="ioService" class="ru.otus.io.IOServiceImpl"></bean>
     <bean id="userSequanceService" class="ru.otus.service.UserSequanceService"></bean>
+    <bean id="userAnswerSequanceService" class="ru.otus.service.UserAnswerSequanceService"></bean>
 
-    <bean id="getUserService" class="ru.otus.service.GetUserServiceImple">
+    <bean id="getUserService" class="ru.otus.service.GetUserServiceImpl">
         <constructor-arg index="0" ref="ioService"/>
         <constructor-arg index="1" ref="userSequanceService"/>
     </bean>
+
+    <bean id="getUserAnswerService" class="ru.otus.service.GetUserAnswerServiceImpl">
+        <constructor-arg ref="userAnswerSequanceService"/>
+    </bean>
+
     <bean id="consoleViewService" class="ru.otus.view.ConsoleViewServiceImpl">
+
         <constructor-arg index="0" ref="qaCorrespondenceService"/>
         <constructor-arg index="1" ref="getUserService"/>
-        <constructor-arg index="2" ref="ioService"/>
+        <constructor-arg index="2" ref="getUserAnswerService"/>
+        <constructor-arg index="3" ref="ioService"/>
     </bean>
 
 

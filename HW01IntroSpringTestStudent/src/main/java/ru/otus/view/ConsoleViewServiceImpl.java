@@ -4,8 +4,9 @@ import ru.otus.domain.Answer;
 import ru.otus.domain.Question;
 import ru.otus.domain.User;
 import ru.otus.domain.UserAnswer;
+import ru.otus.service.GetUserAnswerService;
+import ru.otus.io.IOService;
 import ru.otus.service.GetUserService;
-import ru.otus.service.IOService;
 import ru.otus.service.QACorrespondenceService;
 
 import java.util.ArrayList;
@@ -14,11 +15,13 @@ import java.util.List;
 public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
     final QACorrespondenceService qaCorrespondenceService;
     final GetUserService getUserService;
+    final GetUserAnswerService getUserAnswerService;
     final IOService ioService;
 
-    public ConsoleViewServiceImpl(QACorrespondenceService qaCorrespondenceService, GetUserService getUserService, IOService ioService) {
+    public ConsoleViewServiceImpl(QACorrespondenceService qaCorrespondenceService, GetUserService getUserService, GetUserAnswerService getUserAnswerService, IOService ioService) {
         this.qaCorrespondenceService = qaCorrespondenceService;
         this.getUserService = getUserService;
+        this.getUserAnswerService = getUserAnswerService;
         this.ioService = ioService;
     }
 
@@ -37,7 +40,7 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
             ioService.showText("\n");
             int choice = Integer.parseInt(ioService.userInput("Введите номер ответа: "))-1;
             Answer answer = question.getAnswerList().get(choice);
-            userAnswers.add(new UserAnswer(user, question, answer));
+            userAnswers.add(getUserAnswerService.getUserAnswer(user, question, answer));
         }
         return userAnswers;
     }
