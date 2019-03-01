@@ -1,5 +1,6 @@
 package ru.otus.io;
 
+import org.springframework.stereotype.Service;
 import ru.otus.domain.UserAnswer;
 
 import java.io.BufferedReader;
@@ -7,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+@Service
 public class IOServiceImpl implements IOService<UserAnswer>{
     @Override
     public String userInput(String message) {

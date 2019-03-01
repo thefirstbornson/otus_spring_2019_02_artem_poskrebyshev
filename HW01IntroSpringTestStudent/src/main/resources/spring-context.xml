@@ -25,8 +25,8 @@
     </bean>
 
     <bean id="ioService" class="ru.otus.io.IOServiceImpl"></bean>
-    <bean id="userSequanceService" class="ru.otus.service.UserSequanceService"></bean>
-    <bean id="userAnswerSequanceService" class="ru.otus.service.UserAnswerSequanceService"></bean>
+    <bean id="userSequanceService" class="ru.otus.service.UserSequenceService"></bean>
+    <bean id="userAnswerSequanceService" class="ru.otus.service.UserAnswerSequenceService"></bean>
 
     <bean id="getUserService" class="ru.otus.service.GetUserServiceImpl">
         <constructor-arg index="0" ref="ioService"/>

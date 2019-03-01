@@ -1,7 +1,9 @@
 package ru.otus.service;
 
-public class UserAnswerSequanceService implements SequenceService {
+import org.springframework.stereotype.Service;
 
+@Service
+public class UserSequenceService implements SequenceService {
     private static long idCounter = 0;
     @Override
     public long getID() {

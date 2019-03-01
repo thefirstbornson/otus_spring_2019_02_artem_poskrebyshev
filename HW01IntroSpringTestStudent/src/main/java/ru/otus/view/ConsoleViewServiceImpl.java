@@ -1,5 +1,7 @@
 package ru.otus.view;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.otus.domain.Answer;
 import ru.otus.domain.Question;
 import ru.otus.domain.User;
@@ -12,13 +14,18 @@ import ru.otus.service.QACorrespondenceService;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
     final QACorrespondenceService qaCorrespondenceService;
     final GetUserService getUserService;
     final GetUserAnswerService getUserAnswerService;
     final IOService ioService;
 
-    public ConsoleViewServiceImpl(QACorrespondenceService qaCorrespondenceService, GetUserService getUserService, GetUserAnswerService getUserAnswerService, IOService ioService) {
+    @Autowired
+    public ConsoleViewServiceImpl(QACorrespondenceService qaCorrespondenceService
+                                , GetUserService getUserService
+                                , GetUserAnswerService getUserAnswerService
+                                , IOService ioService) {
         this.qaCorrespondenceService = qaCorrespondenceService;
         this.getUserService = getUserService;
         this.getUserAnswerService = getUserAnswerService;

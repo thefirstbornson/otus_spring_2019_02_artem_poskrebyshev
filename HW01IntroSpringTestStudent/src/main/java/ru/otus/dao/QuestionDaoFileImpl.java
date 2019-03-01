@@ -4,14 +4,17 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
+import org.springframework.stereotype.Repository;
 import ru.otus.domain.Question;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+@Repository
 public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Question>  {
 
     public QuestionDaoFileImpl(String fileName) {
