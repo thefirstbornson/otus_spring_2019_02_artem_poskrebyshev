@@ -12,10 +12,9 @@ public class UserAnswer {
         return idCounter++;
     }
 
-    public UserAnswer(User user, Form form, Question question, Answer answer) {
+    public UserAnswer(User user, Question question, Answer answer) {
         this.id = createID();
         this.user = user;
-        this.form = form;
         this.question = question;
         this.answer = answer;
     }

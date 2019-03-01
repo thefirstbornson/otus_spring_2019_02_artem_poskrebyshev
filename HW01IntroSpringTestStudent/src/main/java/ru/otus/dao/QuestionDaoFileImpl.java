@@ -29,12 +29,19 @@ public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Qu
         String[] record = null;
 
         while ((record = qReader.readNext()) != null) {
-            Question qstn = new Question(Integer.valueOf(record[0]),record[1],Integer.valueOf(record[2]));
-            qstns.add(qstn);
+            if (record.length==3){
+                try {
+                    Question qstn = new Question(Integer.valueOf(record[0]),record[1],Integer.valueOf(record[2]));
+                    qstns.add(qstn);
+                } catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+            }
         }
 
         qReader.close();
         return qstns;
 
     }
+
 }

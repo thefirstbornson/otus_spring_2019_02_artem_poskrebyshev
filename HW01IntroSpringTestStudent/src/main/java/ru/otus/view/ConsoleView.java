@@ -17,6 +17,7 @@ public class ConsoleView {
     }
 
     public void showMenu()  {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             System.out.println("-----------------------------------------");
@@ -77,7 +78,7 @@ public class ConsoleView {
             System.out.println();
             int choice = Integer.parseInt(userInput("Введите номер ответа: "))-1;
             Answer answer = question.getAnswerList().get(choice);
-            userAnswers.add(new UserAnswer(user, form, question, answer));
+            userAnswers.add(new UserAnswer(user, question, answer));
         }
         return userAnswers;
     }

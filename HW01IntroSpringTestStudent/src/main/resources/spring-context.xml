@@ -11,7 +11,6 @@
         <constructor-arg value="csv/answers.csv"/>
     </bean>
 
-
     <bean id="answerService" class="ru.otus.service.AnswerServiceImpl">
         <constructor-arg ref="answerDaoFileDao"/>
     </bean>
@@ -24,5 +23,22 @@
         <constructor-arg index="0" ref="answerService"/>
         <constructor-arg index="1" ref="questionService"/>
     </bean>
+
+    <bean id="ioService" class="ru.otus.service.IOServiceImpl"></bean>
+    <bean id="userSequanceService" class="ru.otus.service.UserSequanceService"></bean>
+
+    <bean id="getUserService" class="ru.otus.service.GetUserServiceImple">
+        <constructor-arg index="0" ref="ioService"/>
+        <constructor-arg index="1" ref="userSequanceService"/>
+    </bean>
+    <bean id="consoleViewService" class="ru.otus.view.ConsoleViewServiceImpl">
+        <constructor-arg index="0" ref="qaCorrespondenceService"/>
+        <constructor-arg index="1" ref="getUserService"/>
+        <constructor-arg index="2" ref="ioService"/>
+    </bean>
+
+
+
+
 
 </beans>
