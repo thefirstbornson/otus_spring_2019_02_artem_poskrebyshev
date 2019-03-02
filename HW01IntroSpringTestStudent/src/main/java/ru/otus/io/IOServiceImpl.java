@@ -1,6 +1,9 @@
 package ru.otus.io;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
+import ru.otus.config.DaoConfig;
 import ru.otus.domain.UserAnswer;
 
 import java.io.BufferedReader;
@@ -10,6 +13,13 @@ import java.util.List;
 
 @Service
 public class IOServiceImpl implements IOService<UserAnswer>{
+    private final MessageSource messageSource;
+
+    @Autowired
+    public IOServiceImpl(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
     @Override
     public String userInput(String message) {
         String input=null;
@@ -24,11 +34,15 @@ public class IOServiceImpl implements IOService<UserAnswer>{
         return input;
     }
 
+    public String printLocaleMes(String filePropField){
+       return messageSource.getMessage(filePropField,new Object[]{}, DaoConfig.LOCALE);
+    }
+
     @Override
     public void showMenu()  {
             System.out.println("-----------------------------------------");
-            System.out.println("Программа по проведению тестирования студентов");
-            System.out.println("1. Пройти тестирование");
+            System.out.println(printLocaleMes("test.name"));
+            System.out.println(printLocaleMes("test.menuOption1"));
             System.out.println("-----------------------------------------");
     }
 
@@ -39,15 +53,16 @@ public class IOServiceImpl implements IOService<UserAnswer>{
                 if (userAnswer.getAnswer().isCorrect()) numOfRightAnswers++;
             }
             System.out.println();
-            System.out.println("Тест завершен!");
-            System.out.println("СТУДЕНТ: "+userAnswers.get(0).getUser());
+            System.out.println(printLocaleMes("test.completed")+"!");
+            System.out.println(printLocaleMes("test.student")+": "+userAnswers.get(0).getUser());
             System.out.println("-----------------------------------------");
-            System.out.println("----     РЕЗУЛЬТАТЫ ТЕСТИРОВАНИЯ     ----");
+            System.out.println("----     " +printLocaleMes("test.results")+"     ----");
             System.out.println("-----------------------------------------");
-            System.out.println("Отвечено на "+numOfRightAnswers + " вопросов из " + userAnswers.size() );
+            System.out.println(printLocaleMes("test.rightAnsw")+ " "+numOfRightAnswers
+                            +" "+ printLocaleMes("test.numAnsw") +" "+ userAnswers.size() );
             System.out.println();
             System.out.println();
-        } else System.out.println("Ошибка загрузки вопросов из файла");
+        } else System.out.println(printLocaleMes("test.loadFileError"));
     }
 
     @Override

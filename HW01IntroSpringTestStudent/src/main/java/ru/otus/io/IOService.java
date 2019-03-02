@@ -12,4 +12,5 @@ public interface IOService<T> {
     void showResults(List<T> userAnswers);
 
     void showText(String text);
+    String printLocaleMes(String filePropField);
 }

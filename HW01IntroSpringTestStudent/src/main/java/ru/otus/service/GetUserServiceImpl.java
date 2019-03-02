@@ -19,8 +19,8 @@ public class GetUserServiceImpl implements GetUserService {
 
     @Override
     public User getUser() {
-        String firstName = ioService.userInput("Введите Ваше имя: ");
-        String lastName  = ioService.userInput("Введите Вашу фамилию: ");
+        String firstName = ioService.userInput(ioService.printLocaleMes("test.enterFName")+": ");
+        String lastName  = ioService.userInput(ioService.printLocaleMes("test.enterLName")+": ");
         return new User(userSequenceService.getID(),firstName,lastName);
     }
 }

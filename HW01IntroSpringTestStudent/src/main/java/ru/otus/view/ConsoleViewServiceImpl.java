@@ -46,7 +46,7 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
                     ioService.showText(i + 1 + "." + question.getAnswerList().get(i).getText() + " ");
                 }
                 ioService.showText("\n");
-                int choice = Integer.parseInt(ioService.userInput("Введите номер ответа: ")) - 1;
+                int choice = Integer.parseInt(ioService.userInput(ioService.printLocaleMes("test.enterNumber")+": ")) - 1;
                 Answer answer = question.getAnswerList().get(choice);
                 userAnswers.add(getUserAnswerService.getUserAnswer(user, question, answer));
             }
@@ -58,7 +58,7 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
     public void startInteraction() {
         while (true){
             ioService.showMenu();
-            String menuOption = ioService.userInput("Выберете нужный пункт меню или введите 'q' для выхода из программы: ");
+            String menuOption = ioService.userInput(ioService.printLocaleMes("test.chooseOptionPrompt")+": ");
             switch (menuOption) {
                 case "1":
                     ioService.showResults(getTested());
