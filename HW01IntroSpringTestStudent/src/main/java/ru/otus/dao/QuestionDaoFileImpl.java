@@ -4,8 +4,8 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import org.springframework.stereotype.Repository;
 import ru.otus.domain.Question;
+import ru.otus.service.SequenceService;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Question>  {
+
 
     public QuestionDaoFileImpl(String fileName) {
         super(Question.class, fileName);
@@ -33,7 +34,7 @@ public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Qu
         while ((record = qReader.readNext()) != null) {
             if (Arrays.asList(record).indexOf("#ans")==3){
                 try {
-                    Question qstn = new Question(Integer.valueOf(record[0]),record[1],Integer.valueOf(record[2]));
+                    Question qstn = new Question(Long.valueOf(record[0]),record[1],Integer.valueOf(record[2]));
                     qstns.add(qstn);
                 } catch (NullPointerException | NumberFormatException e){
                     e.printStackTrace();

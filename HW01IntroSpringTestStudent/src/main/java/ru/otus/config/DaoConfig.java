@@ -1,16 +1,15 @@
 package ru.otus.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import ru.otus.dao.AnswerDaoFileImpl;
 import ru.otus.dao.DAO;
 import ru.otus.dao.QuestionDaoFileImpl;
+import ru.otus.service.SequenceService;
 
-import java.time.temporal.ValueRange;
 import java.util.Locale;
 
 
@@ -22,8 +21,8 @@ public class DaoConfig {
    // @Value("${csv.path}")
     public static final Locale LOCALE = new Locale("ru","RU");//Locale.ENGLISH;
     @Bean
-    public DAO answerDaoFileImpl(){
-        return new AnswerDaoFileImpl(getCsvPath(LOCALE));
+    public DAO answerDaoFileImpl(@Qualifier("answerSequenceService") SequenceService answerSequenceService){
+        return new AnswerDaoFileImpl(getCsvPath(LOCALE), answerSequenceService);
     }
 
     @Bean

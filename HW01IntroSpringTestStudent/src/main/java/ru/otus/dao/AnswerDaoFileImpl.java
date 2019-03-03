@@ -4,8 +4,10 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import ru.otus.domain.Answer;
+import ru.otus.service.SequenceService;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,9 +18,11 @@ import java.util.List;
 
 
 public class AnswerDaoFileImpl extends DaoFileImpl<Answer> implements DAO<Answer> {
+    final SequenceService answerSequenceService;
 
-    public AnswerDaoFileImpl(String fileName) {
+    public AnswerDaoFileImpl(String fileName,SequenceService answerSequenceService) {
         super(Answer.class, fileName);
+        this.answerSequenceService = answerSequenceService;
     }
 
     @Override
@@ -37,7 +41,8 @@ public class AnswerDaoFileImpl extends DaoFileImpl<Answer> implements DAO<Answer
             if (aStart>0){
                 try {
                     for (int i=aStart+1;i<record.length-1;i++) {
-                        Answer answ = new Answer(Integer.valueOf(record[0])
+                        Answer answ = new Answer(answerSequenceService.getID()
+                                                ,Integer.valueOf(record[0])
                                                 ,record[i]
                                                 ,Integer.valueOf(record[record.length - 1]) == i-aStart ? true : false);
                         answs.add(answ);
@@ -47,8 +52,6 @@ public class AnswerDaoFileImpl extends DaoFileImpl<Answer> implements DAO<Answer
                 }
             }
         }
-
-
         aReader.close();
         return answs;
     }

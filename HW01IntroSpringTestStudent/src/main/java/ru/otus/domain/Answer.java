@@ -1,11 +1,10 @@
 package ru.otus.domain;
 
 public class Answer {
-    private int id;
+    private long id;
     private int questionID;
     private String text;
     private boolean isCorrect;
-    private static int idCounter = 0;
 
     @Override
     public String toString() {
@@ -17,14 +16,14 @@ public class Answer {
                 '}';
     }
 
-    public Answer(int questionID, String text, boolean isCorrect) {
-        this.id = createID();
+    public Answer(long id, int questionID, String text, boolean isCorrect) {
+        this.id = id;
         this.questionID = questionID;
         this.text = text;
         this.isCorrect = isCorrect;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -57,10 +56,6 @@ public class Answer {
         isCorrect = correct;
     }
 
-    public static synchronized int createID()
-    {
-        return idCounter++;
-    }
 
 
 }

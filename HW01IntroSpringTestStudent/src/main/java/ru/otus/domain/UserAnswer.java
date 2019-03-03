@@ -5,7 +5,6 @@ public class UserAnswer {
     private User user;
     private Question question;
     private Answer answer;
-    private static long idCounter = 0;
 
     public UserAnswer(long id,User user, Question question, Answer answer) {
         this.id = id;
@@ -38,15 +37,18 @@ public class UserAnswer {
         return answer;
     }
 
+    @Override
+    public String toString() {
+        return "UserAnswer{" +
+                "id=" + id +
+                ", user=" + user +
+                ", question=" + question +
+                ", answer=" + answer +
+                '}';
+    }
+
     public void setAnswer(Answer answer) {
         this.answer = answer;
     }
 
-    public static long getIdCounter() {
-        return idCounter;
-    }
-
-    public static void setIdCounter(long idCounter) {
-        UserAnswer.idCounter = idCounter;
-    }
 }
