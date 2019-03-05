@@ -8,7 +8,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 @Configuration
-//@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.properties")
 public class PropertyConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {

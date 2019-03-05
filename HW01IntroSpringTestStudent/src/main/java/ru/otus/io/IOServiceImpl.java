@@ -1,7 +1,9 @@
 package ru.otus.io;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import ru.otus.config.DaoConfig;
 import ru.otus.domain.UserAnswer;
@@ -10,10 +12,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class IOServiceImpl implements IOService<UserAnswer>{
     private final MessageSource messageSource;
+    @Value("${locale.lang}")
+    private String language;
+    @Value("${locale.country}")
+    private String country;
 
     @Autowired
     public IOServiceImpl(MessageSource messageSource) {
@@ -35,7 +42,7 @@ public class IOServiceImpl implements IOService<UserAnswer>{
     }
 
     public String printLocaleMes(String filePropField){
-       return messageSource.getMessage(filePropField,new Object[]{}, DaoConfig.LOCALE);
+       return messageSource.getMessage(filePropField,new Object[]{}, new Locale(language,country));
     }
 
     @Override

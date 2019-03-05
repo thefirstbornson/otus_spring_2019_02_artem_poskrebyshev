@@ -1,19 +1,19 @@
 package ru.otus.dao;
 
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.otus.Main;
+
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = Main.class)
-class AnswerDaoFileImplTest {
+class QuestionDaoFileImplTest {
     @Autowired
     private AnswerDaoFileImpl dao;
 
