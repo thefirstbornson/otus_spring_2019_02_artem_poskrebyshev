@@ -3,9 +3,7 @@ package ru.otus.io;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
-import ru.otus.config.DaoConfig;
 import ru.otus.domain.UserAnswer;
 
 import java.io.BufferedReader;
@@ -17,14 +15,16 @@ import java.util.Locale;
 @Service
 public class IOServiceImpl implements IOService<UserAnswer>{
     private final MessageSource messageSource;
-    @Value("${locale.lang}")
-    private String language;
-    @Value("${locale.country}")
-    private String country;
+    private final String language;
+    private final String country;
 
     @Autowired
-    public IOServiceImpl(MessageSource messageSource) {
+    public IOServiceImpl(MessageSource messageSource,
+                         @Value("${locale.lang}") String language,
+                         @Value("${locale.country}") String country) {
         this.messageSource = messageSource;
+        this.language = language;
+        this.country = country;
     }
 
     @Override
