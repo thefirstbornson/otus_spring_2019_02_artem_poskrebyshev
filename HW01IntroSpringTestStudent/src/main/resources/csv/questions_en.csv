@@ -1,0 +1,5 @@
+1,"Which of the following types is primitive?",1,#ans,String,int,Boolean,PrimitiveChar,2
+2,"What will be the default value of boolean variable?",1,#ans,0,null,false,true,3
+3,"What kind of loop does not exist in Java?",1,#ans,for, while, do-while,repeat-until,4
+4,"Find the right Java compiler.",1,#ans,javac,JavaCompiler,cx_Freeze,classGen,1
+5,"What provides the minimum requirements for executing a Java application?",1,#ans,JRE,JDK,JVM,JJB,1

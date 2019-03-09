@@ -5,14 +5,17 @@ import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import ru.otus.domain.Question;
+import ru.otus.service.SequenceService;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Question>  {
+
 
     public QuestionDaoFileImpl(String fileName) {
         super(Question.class, fileName);
@@ -29,12 +32,19 @@ public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Qu
         String[] record = null;
 
         while ((record = qReader.readNext()) != null) {
-            Question qstn = new Question(Integer.valueOf(record[0]),record[1],Integer.valueOf(record[2]));
-            qstns.add(qstn);
+            if (Arrays.asList(record).indexOf("#ans")==3){
+                try {
+                    Question qstn = new Question(Long.valueOf(record[0]),record[1],Integer.valueOf(record[2]));
+                    qstns.add(qstn);
+                } catch (NullPointerException | NumberFormatException e){
+                    e.printStackTrace();
+                }
+            }
         }
 
         qReader.close();
         return qstns;
 
     }
+
 }

@@ -3,19 +3,12 @@ package ru.otus.domain;
 public class UserAnswer {
     private long id;
     private User user;
-    private Form form;
     private Question question;
     private Answer answer;
-    private static long idCounter = 0;
 
-    private static synchronized long createID() {
-        return idCounter++;
-    }
-
-    public UserAnswer(User user, Form form, Question question, Answer answer) {
-        this.id = createID();
+    public UserAnswer(long id,User user, Question question, Answer answer) {
+        this.id = id;
         this.user = user;
-        this.form = form;
         this.question = question;
         this.answer = answer;
     }
@@ -24,21 +17,12 @@ public class UserAnswer {
         return id;
     }
 
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Form getForm() {
-        return form;
-    }
-
-    public void setForm(Form form) {
-        this.form = form;
     }
 
     public Question getQuestion() {
@@ -53,15 +37,18 @@ public class UserAnswer {
         return answer;
     }
 
+    @Override
+    public String toString() {
+        return "UserAnswer{" +
+                "id=" + id +
+                ", user=" + user +
+                ", question=" + question +
+                ", answer=" + answer +
+                '}';
+    }
+
     public void setAnswer(Answer answer) {
         this.answer = answer;
     }
 
-    public static long getIdCounter() {
-        return idCounter;
-    }
-
-    public static void setIdCounter(long idCounter) {
-        UserAnswer.idCounter = idCounter;
-    }
 }

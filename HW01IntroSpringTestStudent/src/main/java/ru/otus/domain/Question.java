@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
-    private int id;
+    private long id;
     private String text;
     private int multiAnswer=1;
     private List<Answer> answerList;
 
-    public Question(int id, String text, int multiAnswer) {
+    public Question(long id, String text, int multiAnswer) {
         this.id = id;
         this.text = text;
         this.multiAnswer = multiAnswer;
@@ -28,7 +28,7 @@ public class Question {
         }
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -43,9 +43,6 @@ public class Question {
     public void setText(String text) {
         this.text = text;
     }
-
-
-
 
     public int getMultiAnswer() {
         return multiAnswer;

@@ -4,21 +4,21 @@ public class User {
     private long id;
     private String firstName;
     private String lastName;
-    private static long idCounter = 0;
+
 
     public long getId() {
         return id;
     }
 
-    public void setId() {
-        this.id = createID();
+    public void setId(long id) {
+        this.id = id;
     }
 
     public User() {
     }
 
-    public User(String firstName, String lastName) {
-        this.id = createID();
+    public User(long id, String firstName, String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -37,12 +37,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-
-    private static synchronized long createID()
-    {
-        return idCounter++;
     }
 
     @Override

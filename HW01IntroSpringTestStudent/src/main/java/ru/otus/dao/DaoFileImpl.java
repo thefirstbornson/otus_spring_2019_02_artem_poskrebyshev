@@ -3,7 +3,7 @@ package ru.otus.dao;
 import java.io.IOException;
 import java.util.List;
 
-public abstract class DaoFileImpl<T> implements DAO <T> {
+public abstract class DaoFileImpl<T> implements DaoFile <T> {
     final Class<T> entityClass;
     final String fileName;
 
@@ -32,5 +32,6 @@ public abstract class DaoFileImpl<T> implements DAO <T> {
         return null;
     }
 
+    @Override
     public abstract List<T> parseCSV() throws IOException;
 }
