@@ -1,0 +1,5 @@
+1,"Какой из перечисленных типов является примитивным?",1,#ans,String,int,Boolean,PrimitiveChar,2
+2,"Какими значениями инициализируются переменные типа boolean по умолчанию?",1,#ans,0,null,false,true,3
+3,"Какой вид цикла отсутсвует в Java?",1,#ans,for, while, do-while,repeat-until,4
+4,"Найдите компилятор языка Java?",1,#ans,javac,JavaCompiler,cx_Freeze,classGen,1
+5,"Минимальная реализация виртуальной машины, необходимая для исполнения Java-приложений называется",1,#ans,JRE,JDK,JVM,JJB,1
