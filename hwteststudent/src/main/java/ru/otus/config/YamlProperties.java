@@ -40,4 +40,8 @@ public class YamlProperties {
     public void setLocaleCountry(String localeCountry) {
         this.localeCountry = localeCountry;
     }
+
+    public String getFullPath(){
+        return qaPath+localeLang+fileExt;
+    }
 }

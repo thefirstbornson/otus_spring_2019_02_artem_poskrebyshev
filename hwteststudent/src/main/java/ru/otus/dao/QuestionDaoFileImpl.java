@@ -9,6 +9,7 @@ import ru.otus.service.SequenceService;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,9 +25,9 @@ public class QuestionDaoFileImpl extends DaoFileImpl<Question> implements DAO<Qu
     @Override
     public List<Question> parseCSV() throws IOException {
 
-        URL resource = getClass().getClassLoader().getResource(fileName);
-        CSVParser parser = new CSVParserBuilder().build();
-        CSVReader qReader = new CSVReaderBuilder(new FileReader(resource.getFile())).withCSVParser(parser).build();
+        CSVReader qReader = new CSVReader(
+                new InputStreamReader(getClass().getClassLoader().getResourceAsStream(fileName)));
+
 
         List<Question> qstns = new ArrayList<>();
         String[] record = null;

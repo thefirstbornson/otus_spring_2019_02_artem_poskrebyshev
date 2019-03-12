@@ -10,19 +10,11 @@ import ru.otus.view.ConsoleViewService;
 
 @SpringBootApplication
 @EnableConfigurationProperties(YamlProperties.class)
-public class Main {//implements CommandLineRunner {
-//    @Autowired
-//    ConsoleViewService consoleViewService;
+public class Main {
 
     public static void main(String[] args)  {
-        //SpringApplication.run(Main.class, args);
         final ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
         final ConsoleViewService consoleViewService = context.getBean(ConsoleViewService.class);
         consoleViewService.startInteraction();
     }
-
-//    @Override
-//    public void run(String... args) throws Exception {
-//    consoleViewService.startInteraction();
-//    }
 }

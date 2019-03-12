@@ -18,23 +18,16 @@ import javax.xml.ws.soap.Addressing;
 
 @Configuration
 public class DaoConfig {
-
-
    @Bean
    @Autowired
     public DaoFile<Answer> answerDaoFileImpl(@Qualifier("answerSequenceService") SequenceService answerSequenceService
                                             ,YamlProperties yamlProperties){
-       return new AnswerDaoFileImpl(yamlProperties.getQaPath()
-                                   +yamlProperties.getLocaleLang()
-                                   +yamlProperties.getFileExt(),answerSequenceService);
+       return new AnswerDaoFileImpl(yamlProperties.getFullPath(),answerSequenceService);
     }
-
     @Bean
     @Autowired
     public DaoFile<Question> questionDaoFileImpl(YamlProperties yamlProperties){
-        return new QuestionDaoFileImpl(yamlProperties.getQaPath()
-                                        +yamlProperties.getLocaleLang()
-                                        +yamlProperties.getFileExt());
+        return new QuestionDaoFileImpl(yamlProperties.getFullPath());
     }
 
 }
