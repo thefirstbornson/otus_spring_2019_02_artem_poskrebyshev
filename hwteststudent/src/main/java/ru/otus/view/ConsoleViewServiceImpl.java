@@ -56,6 +56,7 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
 
     @Override
     public void startInteraction() {
+        outlabel:
         while (true){
             ioService.showMenu();
             String menuOption = ioService.userInput(ioService.printLocaleMes("test.chooseOptionPrompt")+": ");
@@ -64,8 +65,7 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
                     ioService.showResults(getTested());
                     break;
                 case "q":
-                    System.exit(0);
-                    break;
+                    break outlabel;
             }
         }
     }

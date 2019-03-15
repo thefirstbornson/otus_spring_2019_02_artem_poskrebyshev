@@ -4,8 +4,15 @@ import java.io.IOException;
 import java.util.List;
 
 public abstract class DaoFileImpl<T> implements DaoFile <T> {
-    final Class<T> entityClass;
-    final String fileName;
+    private final Class<T> entityClass;
+    String fileName;
+
+    @Override
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+
 
     DaoFileImpl(Class<T> entityClass, String fileName) {
         this.entityClass = entityClass;

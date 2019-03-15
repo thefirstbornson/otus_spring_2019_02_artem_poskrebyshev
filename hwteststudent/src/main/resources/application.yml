@@ -2,8 +2,3 @@ qaPath: "csv/questions_"
 fileExt: ".csv"
 localeLang: "ru"
 localeCountry: "RU"
-
-spring:
-  shell:
-    interactive:
-        enabled: false

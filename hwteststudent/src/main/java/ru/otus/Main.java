@@ -13,8 +13,9 @@ import ru.otus.view.ConsoleViewService;
 public class Main {
 
     public static void main(String[] args)  {
-        final ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
-        final ConsoleViewService consoleViewService = context.getBean(ConsoleViewService.class);
-        consoleViewService.startInteraction();
+        SpringApplication.run(Main.class, args);
+//        final ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
+//        final ConsoleViewService consoleViewService = context.getBean(ConsoleViewService.class);
+//        consoleViewService.startInteraction();
     }
 }

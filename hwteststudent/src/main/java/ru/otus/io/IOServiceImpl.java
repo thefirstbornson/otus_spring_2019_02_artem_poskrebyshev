@@ -16,15 +16,17 @@ import java.util.Locale;
 @Service
 public class IOServiceImpl implements IOService<UserAnswer>{
     private final MessageSource messageSource;
-    private final String language;
-    private final String country;
+    private String language;
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
     @Autowired
     public IOServiceImpl(MessageSource messageSource,
                          YamlProperties yamlProperties) {
         this.messageSource = messageSource;
         this.language = yamlProperties.getLocaleLang();
-        this.country = yamlProperties.getLocaleCountry();
     }
 
     @Override
@@ -42,7 +44,7 @@ public class IOServiceImpl implements IOService<UserAnswer>{
     }
 
     public String printLocaleMes(String filePropField){
-       return messageSource.getMessage(filePropField,new Object[]{}, new Locale(language,country));
+       return messageSource.getMessage(filePropField,new Object[]{}, new Locale(language));
     }
 
     @Override
