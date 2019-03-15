@@ -23,7 +23,7 @@ class AnswerDaoFileImplTest {
     @Qualifier("answerSequenceService")
     private SequenceService answerSequenceService;
 
-    AnswerDaoFileImpl aDao= new AnswerDaoFileImpl("",answerSequenceService);
+    AnswerDaoFileImpl aDao= new AnswerDaoFileImpl("wrongFileName",answerSequenceService);
 
     @Test
     void parseCSV() throws IOException {
@@ -31,8 +31,8 @@ class AnswerDaoFileImplTest {
     }
 
     @Test
-    void TestNoFile(){
-        assertThrows(IOException.class, ()->aDao.parseCSV());
+    void WrongNoFile(){
+        assertThrows(NullPointerException.class, ()->aDao.parseCSV());
     }
 
 }
