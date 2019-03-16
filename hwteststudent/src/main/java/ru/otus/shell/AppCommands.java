@@ -30,7 +30,7 @@ public class AppCommands {
         consoleViewService.startInteraction();
     }
 
-    @ShellMethod("Change locale")
+    @ShellMethod("Change locale ")
     public String changeLocale(@ShellOption String locale){
 
         DaoFile questionDaoFile = (DaoFile) applicationContext.getBean("questionDaoFileImpl");
