@@ -20,8 +20,7 @@ public class AppCommands {
     private ApplicationContext applicationContext;
 
     @Autowired
-    public AppCommands(ConsoleViewService consoleViewService
-            , YamlProperties yamlProperties) {
+    public AppCommands(ConsoleViewService consoleViewService, YamlProperties yamlProperties) {
         this.consoleViewService = consoleViewService;
         this.yamlProperties = yamlProperties;
     }
