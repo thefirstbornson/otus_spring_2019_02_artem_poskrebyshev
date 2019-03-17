@@ -62,7 +62,6 @@ public class IOServiceImpl implements IOService<UserAnswer>{
                 if (userAnswer.getAnswer().isCorrect()) numOfRightAnswers++;
             }
             System.out.println();
-            System.out.println(printLocaleMes("test.completed")+"!");
             System.out.println(printLocaleMes("test.student")+": "+userAnswers.get(0).getUser());
             System.out.println("-----------------------------------------");
             System.out.println("----     " +printLocaleMes("test.results")+"     ----");

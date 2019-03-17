@@ -7,6 +7,6 @@ import ru.otus.domain.UserAnswer;
 import java.util.List;
 
 public interface ConsoleViewService<T> {
-    List<T> getTested();
     void startInteraction();
+    List<UserAnswer> getTested(User user) ;
 }
