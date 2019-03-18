@@ -13,4 +13,6 @@ public interface IOService<T> {
 
     void showText(String text);
     String printLocaleMes(String filePropField);
+
+    void setLanguage(String language);
 }

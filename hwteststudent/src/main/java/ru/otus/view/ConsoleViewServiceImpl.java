@@ -33,15 +33,14 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
     }
 
     @Override
-    public List<UserAnswer> getTested() {
-        User user = getUserService.getUser();
+    public List<UserAnswer> getTested(User user) {
         List<UserAnswer> userAnswers =new ArrayList<>();
         List<Question>  questionList =  qaCorrespondenceService.correspondQA();
         if (questionList.size()>0) {
             for (int k = 0; k < questionList.size(); k++) {
                 Question question = questionList.get(k);
-                ioService.showText(k + 1 + ". " + question.getText());
-                ioService.showText("\n");
+                ioService.showText(k + 1 + ". " + question.getText()+"\n");
+                //ioService.showText();
                 for (int i = 0; i < question.getAnswerList().size(); i++) {
                     ioService.showText(i + 1 + "." + question.getAnswerList().get(i).getText() + " ");
                 }
@@ -49,6 +48,7 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
                 int choice = Integer.parseInt(ioService.userInput(ioService.printLocaleMes("test.enterNumber")+": ")) - 1;
                 Answer answer = question.getAnswerList().get(choice);
                 userAnswers.add(getUserAnswerService.getUserAnswer(user, question, answer));
+                ioService.showText(ioService.printLocaleMes("test.completed")+"!"+"\n");
             }
         }
         return userAnswers;
@@ -56,16 +56,17 @@ public class ConsoleViewServiceImpl implements ConsoleViewService<UserAnswer> {
 
     @Override
     public void startInteraction() {
+        outlabel:
         while (true){
             ioService.showMenu();
             String menuOption = ioService.userInput(ioService.printLocaleMes("test.chooseOptionPrompt")+": ");
             switch (menuOption) {
                 case "1":
-                    ioService.showResults(getTested());
+                    User user = getUserService.getUser();
+                    ioService.showResults(getTested(user));
                     break;
                 case "q":
-                    System.exit(0);
-                    break;
+                    break outlabel;
             }
         }
     }

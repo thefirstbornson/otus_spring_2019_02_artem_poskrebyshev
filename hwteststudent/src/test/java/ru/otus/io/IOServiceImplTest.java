@@ -2,16 +2,10 @@ package ru.otus.io;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.MessageSource;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import ru.otus.Main;
-import ru.otus.config.ConfigTest;
 import ru.otus.config.YamlProperties;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,8 +18,7 @@ class IOServiceImplTest {
 
     private IOService ioService;
 
-    @Autowired
-    @Qualifier("messageSourceTest")
+    @MockBean
     private MessageSource messageSource;
     @Autowired
     private YamlProperties yamlProperties;
