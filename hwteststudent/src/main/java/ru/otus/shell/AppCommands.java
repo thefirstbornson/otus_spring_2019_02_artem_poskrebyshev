@@ -83,5 +83,4 @@ public class AppCommands {
                 ? Availability.available()
                 : Availability.unavailable("you have not started the test");
     }
-
 }
